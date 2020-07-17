@@ -26,7 +26,6 @@ module CarrierWaveDirect
         return @policy if @policy.present?
         conditions = []
 
-        conditions << ["starts-with", "$utf8", ""] if options[:enforce_utf8]
         conditions << ["starts-with", "$key", uploader.key.sub(/#{Regexp.escape(CarrierWaveDirect::Uploader::FILENAME_WILDCARD)}\z/, "")]
         conditions << {'X-Amz-Algorithm' => algorithm}
         conditions << {'X-Amz-Credential' => credential}
